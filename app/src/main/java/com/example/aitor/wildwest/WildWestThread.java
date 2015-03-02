@@ -74,7 +74,7 @@ public class WildWestThread extends Thread{
                 c = mySurfaceHolder.lockCanvas(null);
                 synchronized (mySurfaceHolder) {
                     if (!gameOver) {
-                        animateMoles();
+                        animatebandit();
                     }
                     draw(c);
                 }
@@ -154,14 +154,14 @@ public class WildWestThread extends Thread{
                         whack = Bitmap.createScaledBitmap(whack, (int)(whack.getWidth()*scaleW), (int)(whack.getHeight()*scaleH), true);
                         gameOverDialog = Bitmap.createScaledBitmap(gameOverDialog, (int)(gameOverDialog.getWidth()*scaleW), (int)(gameOverDialog.getHeight()*scaleH), true);
                         onTitle = false;
-                        pickActiveMole();
+                        pickActiveBandit();
                     }
                     whacking = false;
                     if (gameOver) {
                         banditShoot = 0;
                         banditMissed = 0;
                         activeMole = 0;
-                        pickActiveMole();
+                        pickActiveBandit();
                         gameOver = false;
                     }
                     break;
@@ -200,7 +200,7 @@ public class WildWestThread extends Thread{
         running = b;
     }
 
-   private void animateMoles() {
+   private void animatebandit() {
        if (activeMole == 1) {
            if (moleRising) {
                bandit1y -= moleRate;
@@ -209,7 +209,7 @@ public class WildWestThread extends Thread{
            }
            if (bandit1y >= (int) (300 * drawScaleH) || moleJustHit) {
                bandit1y = (int) (300 * drawScaleH);
-               pickActiveMole();
+               pickActiveBandit();
            }
            if (bandit1y <= (int) (50 * drawScaleH)) {
                bandit1y = (int) (50 * drawScaleH);
@@ -226,7 +226,7 @@ public class WildWestThread extends Thread{
             }
             if (bandit2x >= (int) (950*drawScaleW) || moleJustHit) {
                 bandit2x = (int) (950*drawScaleW);
-                pickActiveMole();
+                pickActiveBandit();
             }
             if (bandit2x <= (int) (600*drawScaleW)) {
                 bandit2x = (int) (600*drawScaleW);
@@ -247,7 +247,7 @@ public class WildWestThread extends Thread{
             }
             if (bandit3x <= (int) (950*drawScaleW)|| moleJustHit) {
                 bandit3x = (int) (950*drawScaleW);
-                pickActiveMole();
+                pickActiveBandit();
             }
         }
         if (activeMole == 4) {
@@ -258,7 +258,7 @@ public class WildWestThread extends Thread{
             }
             if (bandit4x >= (int) (950*drawScaleW) || moleJustHit) {
                 bandit4x = (int) (950*drawScaleW);
-                pickActiveMole();
+                pickActiveBandit();
             }
             if (bandit4x <= (int) (600*drawScaleW)) {
                 bandit4x = (int) (600*drawScaleW);
@@ -279,13 +279,13 @@ public class WildWestThread extends Thread{
             }
             if (bandit5x <= (int) (950*drawScaleW)|| moleJustHit) {
                 bandit5x = (int) (950*drawScaleW);
-                pickActiveMole();
+                pickActiveBandit();
             }
         }
 
     }
 
-    private void pickActiveMole() {
+    private void pickActiveBandit() {
         if (!moleJustHit && activeMole > 0) {
             if (soundOn) {
                 AudioManager audioManager = (AudioManager) myContext.getSystemService(Context.AUDIO_SERVICE);
