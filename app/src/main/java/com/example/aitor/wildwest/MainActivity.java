@@ -17,9 +17,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wildwest_layout);
         vj = (VistaJuego) findViewById(R.id.mole);
-        vj.setKeepScreenOn(true);
-        setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        vj.soundOn = soundEnabled;
     }
 
 }
