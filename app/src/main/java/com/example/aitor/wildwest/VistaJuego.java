@@ -25,7 +25,6 @@ import java.util.Random;
 public class VistaJuego extends SurfaceView implements SurfaceHolder.Callback {
 
 
-    public boolean soundOn = true;
     private WildWestThread thread;
 
     public VistaJuego(Context context, AttributeSet attrs) {
